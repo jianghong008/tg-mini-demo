@@ -1,11 +1,13 @@
 import { useState } from "react";
 import WebApp from "@twa-dev/sdk";
-import { TonConnectButton } from "@tonconnect/ui-react";
+import { TonConnectButton,useTonAddress } from "@tonconnect/ui-react";
 
 export default function MyBtn() {
     const [show, setShow] = useState(0);
+    const address = useTonAddress()
     return (
-        <>
+        <div className="flex flex-center flex-col flex-gap">
+            <p>address:{address?address:'Not Connected'}</p>
             <TonConnectButton />
             <button
                 onClick={() => {
@@ -17,6 +19,7 @@ export default function MyBtn() {
             >
                 {show ? "Hide" : "Show"} Button
             </button>
-        </>
+            <button></button>
+        </div>
     );
 }
