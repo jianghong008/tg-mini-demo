@@ -8,7 +8,7 @@ WebApp.ready();
 function App() {
 
   return (
-    <TonConnectUIProvider manifestUrl=''>
+    <TonConnectUIProvider manifestUrl='https://jianghong008.github.io/tg-mini-demo/tonconnect-manifest.json'>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
