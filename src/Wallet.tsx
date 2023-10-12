@@ -2,7 +2,6 @@ import { useState } from "react";
 import WebApp from "@twa-dev/sdk";
 import {
     TonConnectButton,
-    useTonAddress,
     useTonWallet,
     useTonConnectUI,
     SendTransactionRequest
@@ -20,9 +19,8 @@ const transaction:SendTransactionRequest = {
 
 export default function MyBtn() {
     const [show, setShow] = useState(0);
-    const address = useTonAddress();
     const wallet = useTonWallet();
-    const [tonConnectUI, setOptions] = useTonConnectUI()
+    const [tonConnectUI, ] = useTonConnectUI()
     return (
         <div className="flex justify-center items-center flex-col gap-4">
             <h4>{wallet?.device.appName}</h4>
