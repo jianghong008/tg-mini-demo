@@ -16,9 +16,9 @@ const transaction: SendTransactionRequest = {
 };
 
 const Transcation = ()=>{
-    const [theme,setTheme] = useContext(themeCtx)
+    const [theme] = useContext(themeCtx)
     const [tonConnectUI,] = useTonConnectUI()
-    let [amount,setAmount] = useState(0)
+    const [amount,setAmount] = useState(0)
     const send = () => {
         if (!tonConnectUI.connected) {
             WebApp.showAlert('请先连接')
