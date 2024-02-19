@@ -1,4 +1,4 @@
-import { useState,useEffect, } from "react";
+import { useState, useEffect, useContext } from "react";
 import WebApp from "@twa-dev/sdk";
 import {
     TonConnectButton,
@@ -6,7 +6,10 @@ import {
     useTonConnectUI,
 } from "@tonconnect/ui-react";
 
+
 import Transcation from "./Transcation";
+import MyHome from "./MyHome";
+import { themeCtx } from "./App";
 
 export default function MyBtn() {
     const [show, setShow] = useState(0);
@@ -14,31 +17,34 @@ export default function MyBtn() {
     const [tonConnectUI,] = useTonConnectUI()
 
     WebApp.MainButton.setText('主按钮')
-
+    const [theme] = useContext(themeCtx)
     const setBtn = () => {
         setShow(show > 0 ? 0 : 1);
         !show && WebApp.MainButton.show();
         show && WebApp.MainButton.hide();
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('show')
-    },[show])
+    }, [show])
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('wallet')
-    },[wallet])
+    }, [wallet])
 
     return (
-        <div className="flex justify-center items-center flex-col gap-4">
+        <div className={`flex justify-center items-center flex-col gap-4 box-${theme}`}>
+            
             <h4>{wallet?.device.appName}</h4>
             <TonConnectButton />
-            <button onClick={setBtn }>
+            <button onClick={setBtn}>
                 {show ? "Hide" : "Show"} Bottom Button
             </button>
             {tonConnectUI.connected && (
-                <Transcation/>
+                <Transcation />
             )}
+            <MyHome />
+
         </div>
     );
 }
